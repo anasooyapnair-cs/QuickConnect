@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Worker Dashboard – QuickConnect</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wordmark">Quick<span>Connect</span></div>
+  <div class="topbar-actions">
+    <span style="color: var(--mid); font-size:0.9rem;">{{ session.name }}</span>
+    <a href="{{ url_for('logout') }}" class="btn btn-outline">
+      <i class="fa fa-right-from-bracket"></i> Logout
+    </a>
+  </div>
+</div>
+
+<div class="container">
+  <br>
+  <h2>Worker Dashboard</h2>
+  <p>Welcome back, <strong style="color:var(--ink)">{{ session.name }}</strong>.</p>
+
+  <div class="stats-row">
+    <div class="stat-chip">
+      <div class="value">{{ jobs_done }}</div>
+      <div class="label">Jobs Done</div>
+    </div>
+    <div class="stat-chip">
+      <div class="value">{{ avg_rating if avg_rating > 0 else '—' }}</div>
+      <div class="label">Avg Rating</div>
+    </div>
+  </div>
+
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% for category, message in messages %}
+      <div class="flash {{ category }}">{{ message }}</div>
+    {% endfor %}
+  {% endwith %}
+
+  <a href="{{ url_for('my_jobs') }}" class="btn btn-primary btn-block">
+    <i class="fa fa-briefcase"></i> View My Jobs
+  </a>
+
+  <br><br>
+
+  <!-- SOS -->
+  <div class="card" style="border: 1.5px solid #ff3366; background: #fff0f3;">
+    <i class="fa fa-triangle-exclamation" style="color: var(--accent); font-size: 1.6rem; margin-bottom: 8px;"></i>
+    <h3 style="color: var(--accent);">Emergency SOS</h3>
+    <p style="font-size:0.85rem;">In case of an emergency, send an SOS alert to our support team.</p>
+    <form method="POST" action="{{ url_for('sos') }}">
+      <input type="hidden" name="job_id" value="">
+      <input type="hidden" name="message" value="SOS Triggered">
+      <button type="submit" class="btn-primary btn-block" style="background: var(--accent);">
+        <i class="fa fa-bell"></i> Send SOS Alert
+      </button>
+    </form>
+  </div>
+
+</div>
+</body>
+</html>

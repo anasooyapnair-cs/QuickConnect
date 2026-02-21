@@ -1,0 +1,369 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap');
+
+/* ─── Tokens ──────────────────────────────────────────────────────────────── */
+:root {
+  --ink:      #0f0e17;
+  --paper:    #faf9f6;
+  --accent:   #ff3366;
+  --accent2:  #00c896;
+  --mid:      #6b7280;
+  --border:   #e5e2dc;
+  --card-bg:  #ffffff;
+  --radius:   14px;
+  --shadow:   0 2px 20px rgba(0,0,0,0.07);
+}
+
+/* ─── Reset ───────────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  min-height: 100vh;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* ─── Layout ──────────────────────────────────────────────────────────────── */
+.container {
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 40px 24px;
+}
+
+.container.wide {
+  max-width: 860px;
+}
+
+/* ─── Wordmark ────────────────────────────────────────────────────────────── */
+.wordmark {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 2rem;
+  letter-spacing: -0.04em;
+  color: var(--ink);
+  display: inline-block;
+  margin-bottom: 32px;
+}
+
+.wordmark span {
+  color: var(--accent);
+}
+
+/* ─── Typography ──────────────────────────────────────────────────────────── */
+h1, h2, h3 {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+h1 { font-size: 2rem; }
+h2 { font-size: 1.5rem; margin-bottom: 20px; }
+h3 { font-size: 1.1rem; margin-bottom: 12px; }
+
+p { color: var(--mid); margin-bottom: 12px; }
+p strong { color: var(--ink); }
+
+/* ─── Card ────────────────────────────────────────────────────────────────── */
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px;
+  box-shadow: var(--shadow);
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.card.left { text-align: left; }
+
+/* ─── Forms ───────────────────────────────────────────────────────────────── */
+.form-group {
+  margin-bottom: 16px;
+  text-align: left;
+}
+
+label {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--mid);
+  margin-bottom: 6px;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="number"],
+select,
+textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  color: var(--ink);
+  background: #fff;
+  transition: border-color 0.15s;
+  outline: none;
+  appearance: none;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: var(--accent);
+}
+
+textarea { resize: vertical; min-height: 80px; }
+
+/* ─── Buttons ─────────────────────────────────────────────────────────────── */
+button, .btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 22px;
+  border-radius: 8px;
+  font-family: 'Syne', sans-serif;
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  border: none;
+  text-decoration: none;
+  transition: transform 0.12s, box-shadow 0.12s, opacity 0.12s;
+}
+
+button:hover, .btn:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,0,0,0.12); }
+button:active, .btn:active { transform: translateY(0); }
+
+.btn-primary, button.primary {
+  background: var(--accent);
+  color: #fff;
+}
+
+.btn-green {
+  background: var(--accent2);
+  color: #fff;
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--ink);
+  border: 1.5px solid var(--border);
+}
+
+.btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+
+.btn-block { width: 100%; justify-content: center; margin-top: 8px; }
+
+/* ─── Flash messages ──────────────────────────────────────────────────────── */
+.flash {
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+.flash.error   { background: #fff0f3; color: #c0392b; border: 1px solid #f5c6cb; }
+.flash.success { background: #f0fff8; color: #1a7a4a; border: 1px solid #b2dfdb; }
+
+/* ─── Nav bar ─────────────────────────────────────────────────────────────── */
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+  border-bottom: 1px solid var(--border);
+  background: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.topbar .wordmark { margin-bottom: 0; font-size: 1.3rem; }
+
+.topbar-actions { display: flex; gap: 10px; align-items: center; }
+
+/* ─── Stat chips ──────────────────────────────────────────────────────────── */
+.stats-row {
+  display: flex;
+  gap: 14px;
+  margin-bottom: 28px;
+}
+
+.stat-chip {
+  flex: 1;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+  text-align: center;
+}
+
+.stat-chip .value {
+  font-family: 'Syne', sans-serif;
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--ink);
+  line-height: 1;
+}
+
+.stat-chip .label {
+  font-size: 0.75rem;
+  color: var(--mid);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-top: 4px;
+}
+
+/* ─── Worker cards grid ───────────────────────────────────────────────────── */
+.results-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+@media (max-width: 600px) { .results-grid { grid-template-columns: 1fr; } }
+
+.worker-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 22px;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.worker-card .avatar {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ff3366 0%, #ff9a5c 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+}
+
+.worker-card h3 { margin-bottom: 2px; font-size: 1rem; }
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 3px 9px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.badge-green { background: #e6faf3; color: #1a7a4a; }
+.badge-yellow { background: #fff8e6; color: #b45309; }
+.badge-red { background: #fff0f3; color: #c0392b; }
+.badge-blue { background: #e8f0fe; color: #1a56a4; }
+
+/* ─── Job list ────────────────────────────────────────────────────────────── */
+.job-item {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px 22px;
+  margin-bottom: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.job-item .job-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.job-item .meta {
+  font-size: 0.82rem;
+  color: var(--mid);
+}
+
+/* ─── OTP display ─────────────────────────────────────────────────────────── */
+.otp-box {
+  background: #f0fff8;
+  border: 2px dashed var(--accent2);
+  border-radius: var(--radius);
+  padding: 24px;
+  text-align: center;
+  margin: 20px 0;
+}
+
+.otp-box .otp-label {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--mid);
+  margin-bottom: 8px;
+}
+
+.otp-box .otp-code {
+  font-family: 'Syne', sans-serif;
+  font-size: 3rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  color: var(--accent2);
+  line-height: 1;
+}
+
+.otp-box .otp-hint {
+  font-size: 0.82rem;
+  color: var(--mid);
+  margin-top: 8px;
+}
+
+/* ─── Success screen ──────────────────────────────────────────────────────── */
+.success-icon {
+  font-size: 3.5rem;
+  color: var(--accent2);
+  margin-bottom: 12px;
+}
+
+/* ─── Divider ─────────────────────────────────────────────────────────────── */
+.divider {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 20px 0;
+}
+
+/* ─── Links ───────────────────────────────────────────────────────────────── */
+a { color: var(--accent); text-decoration: none; font-weight: 500; }
+a:hover { text-decoration: underline; }
+
+.muted-link { color: var(--mid); font-weight: 400; }
+.muted-link:hover { color: var(--ink); }
+
+/* ─── Rating stars ────────────────────────────────────────────────────────── */
+.stars { color: #f59e0b; font-size: 1rem; }
+.no-rating { color: var(--mid); font-style: italic; font-size: 0.85rem; }
+
+/* ─── Verified tick ───────────────────────────────────────────────────────── */
+.verified { color: #1a56a4; font-size: 0.85rem; }
+
+/* ─── Page fade-in ────────────────────────────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.card, .worker-card, .job-item, .stat-chip {
+  animation: fadeUp 0.3s ease both;
+}

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Jobs – QuickConnect</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wordmark">Quick<span>Connect</span></div>
+  <div class="topbar-actions">
+    <a href="{{ url_for('worker_dashboard') }}" class="btn btn-outline">
+      <i class="fa fa-arrow-left"></i> Dashboard
+    </a>
+  </div>
+</div>
+
+<div class="container wide">
+  <br>
+  <h2>My Assigned Jobs</h2>
+  <p>All jobs assigned to you are listed below.</p>
+  <br>
+
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% for category, message in messages %}
+      <div class="flash {{ category }}">{{ message }}</div>
+    {% endfor %}
+  {% endwith %}
+
+  {% if jobs %}
+    {% for job in jobs %}
+      <div class="job-item">
+        <div class="job-header">
+          <h3><i class="fa fa-briefcase"></i> {{ job.service }}</h3>
+          {% if job.status == 'completed' %}
+            <span class="badge badge-green"><i class="fa fa-check"></i> Completed</span>
+          {% elif job.status == 'booked' %}
+            <span class="badge badge-yellow"><i class="fa fa-clock"></i> Booked</span>
+          {% else %}
+            <span class="badge badge-blue">{{ job.status }}</span>
+          {% endif %}
+        </div>
+
+        <p class="meta">
+          <i class="fa fa-user"></i> Client: <strong>{{ job.client_name }}</strong>
+          &nbsp;·&nbsp;
+          <i class="fa fa-calendar"></i> {{ job.created_at[:10] }}
+        </p>
+
+        <p class="meta">
+          Start OTP: <strong>{{ job.otp_start }}</strong>
+          &nbsp;·&nbsp;
+          End OTP: <strong>{{ job.otp_end }}</strong>
+        </p>
+
+        {% if job.status == 'booked' %}
+          <details style="margin-top: 10px;">
+            <summary style="cursor:pointer; font-weight:600; font-size:0.9rem; color: var(--accent2);">
+              <i class="fa fa-flag-checkered"></i> Mark as Completed
+            </summary>
+            <form method="POST" action="{{ url_for('complete_job', job_id=job.id) }}" style="margin-top:12px;">
+              <div class="form-group">
+                <label>Completion OTP (provided by client)</label>
+                <input type="text" name="otp_end" placeholder="Enter 6-digit OTP" required>
+              </div>
+              <div class="form-group">
+                <label>Client Rating (1–5)</label>
+                <select name="rating">
+                  <option value="">Skip rating</option>
+                  <option value="1">1 ★</option>
+                  <option value="2">2 ★★</option>
+                  <option value="3">3 ★★★</option>
+                  <option value="4">4 ★★★★</option>
+                  <option value="5">5 ★★★★★</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Feedback (optional)</label>
+                <textarea name="feedback" placeholder="Any comments from the client..."></textarea>
+              </div>
+              <button type="submit" class="btn-green">
+                <i class="fa fa-circle-check"></i> Complete Job
+              </button>
+            </form>
+          </details>
+        {% endif %}
+
+      </div>
+    {% endfor %}
+  {% else %}
+    <div class="card">
+      <i class="fa fa-inbox" style="font-size:2.5rem; color:var(--mid); margin-bottom:12px;"></i>
+      <h3>No jobs yet</h3>
+      <p>You haven't been assigned any jobs yet. Check back soon!</p>
+    </div>
+  {% endif %}
+
+</div>
+</body>
+</html>

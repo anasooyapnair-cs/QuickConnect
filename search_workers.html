@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Search Results – QuickConnect</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wordmark">Quick<span>Connect</span></div>
+  <div class="topbar-actions">
+    <a href="{{ url_for('client_dashboard') }}" class="btn btn-outline">
+      <i class="fa fa-arrow-left"></i> Back
+    </a>
+  </div>
+</div>
+
+<div class="container wide">
+  <br>
+
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% for category, message in messages %}
+      <div class="flash {{ category }}">{{ message }}</div>
+    {% endfor %}
+  {% endwith %}
+
+  <h2>Available Providers</h2>
+  <p>Showing results for: <strong style="color: var(--ink);">{{ service }}</strong></p>
+  <br>
+
+  {% if workers %}
+    <div class="results-grid">
+      {% for worker in workers %}
+        <div class="worker-card">
+          <div class="avatar">{{ worker.name[0].upper() }}</div>
+          <h3>{{ worker.name }}</h3>
+
+          <div style="display:flex; gap:6px; flex-wrap:wrap; margin-bottom: 6px;">
+            <span class="badge badge-blue">
+              <i class="fa fa-wrench"></i> {{ worker.job }}
+            </span>
+            {% if worker.verified %}
+              <span class="badge badge-green">
+                <i class="fa fa-circle-check"></i> Verified
+              </span>
+            {% endif %}
+          </div>
+
+          {% if worker.jobs_done > 0 %}
+            <p style="font-size:0.85rem;">
+              <span class="stars">
+                {% for i in range(worker.rating | int) %}★{% endfor %}{% for i in range(5 - worker.rating | int) %}☆{% endfor %}
+              </span>
+              <strong>{{ worker.rating }}</strong>
+              <span class="meta"> · {{ worker.jobs_done }} job{% if worker.jobs_done != 1 %}s{% endif %}</span>
+            </p>
+          {% else %}
+            <p class="no-rating"><i class="fa fa-star"></i> No ratings yet</p>
+          {% endif %}
+
+          <form method="POST" action="{{ url_for('select_worker') }}" style="margin-top: auto; padding-top: 12px;">
+            <input type="hidden" name="worker_id" value="{{ worker.id }}">
+            <input type="hidden" name="service" value="{{ service }}">
+            <button type="submit" class="btn-green btn-block">
+              <i class="fa fa-check"></i> Hire
+            </button>
+          </form>
+        </div>
+      {% endfor %}
+    </div>
+
+  {% else %}
+    <div class="card">
+      <i class="fa fa-face-frown" style="font-size:2.5rem; color:var(--mid); margin-bottom:12px;"></i>
+      <h3>No workers found</h3>
+      <p>No available workers match "<strong>{{ service }}</strong>".<br>Try a different search term.</p>
+      <a href="{{ url_for('client_dashboard') }}" class="btn btn-outline" style="margin-top:8px;">
+        <i class="fa fa-arrow-left"></i> Try Again
+      </a>
+    </div>
+  {% endif %}
+
+</div>
+</body>
+</html>

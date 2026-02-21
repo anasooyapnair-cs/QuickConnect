@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Job Completed – QuickConnect</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+<div class="container">
+  <br>
+  <div class="card" style="border: 2px solid var(--accent2);">
+    <div class="success-icon"><i class="fa fa-circle-check"></i></div>
+    <h2 style="color: var(--accent2);">Job Completed!</h2>
+    <p>Great work. Your stats have been updated.</p>
+
+    <hr class="divider">
+
+    <div class="stats-row" style="margin-bottom: 0;">
+      <div class="stat-chip">
+        <div class="value">{{ worker.jobs_done }}</div>
+        <div class="label">Total Jobs</div>
+      </div>
+      <div class="stat-chip">
+        <div class="value">{{ worker.rating if worker.rating > 0 else '—' }}</div>
+        <div class="label">Avg Rating</div>
+      </div>
+    </div>
+  </div>
+
+  <a href="{{ url_for('worker_dashboard') }}" class="btn btn-primary btn-block">
+    <i class="fa fa-house"></i> Back to Dashboard
+  </a>
+
+</div>
+</body>
+</html>
