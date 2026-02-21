@@ -2,39 +2,36 @@
   <img src="./img.png" alt="Project Banner" width="100%">
 </p>
 
-# [Project Name] 🎯
+# QuickConnect
 
-## Basic Details
+## It is a platform which connects skilled workers in need of employment (plumbers, electricians etc), with clients who require their services.
 
-### Team Name: [Name]
+### Team Name: [Seeta&Geeta]
 
 ### Team Members
-- Member 1: [Name] - [College]
-- Member 2: [Name] - [College]
+- Member 1: [Nandita M Menon] - [Mar Baselios College of Engineering and Technology]
+- Member 2: [Anasooya P Nair] - [Mar Baselios College of Engineering and Technology]
 
 ### Hosted Project Link
-[mention your project hosted link here]
+nil
 
 ### Project Description
-[2-3 lines about what your project does]
-
+It is a platform which connects skilled workers in need of employment (plumbers, electricians etc), with clients who require their services. It allowes workers to sign up after adding their skillset, and their identities are verified via Aadhar verification. Clients enter their requirements in their region and the ppair are matched together. 
 ### The Problem statement
-[What problem are you solving?]
-
+Most workers rely on word of mouth for employment opportunities, which often leads to periods of unemployment. Conversely, there are people who have need for skilled labour, but do not know how or where to find it. 
 ### The Solution
-[How are you solving it?]
-
----
+This platform connects people with their requirements. It is easy to use with minimal complexity. 
+**---
 
 ## Technical Details
 
 ### Technologies/Components Used
 
 **For Software:**
-- Languages used: [e.g., JavaScript, Python, Java]
-- Frameworks used: [e.g., React, Django, Spring Boot]
-- Libraries used: [e.g., axios, pandas, JUnit]
-- Tools used: [e.g., VS Code, Git, Docker]
+- Languages used: Python, HTML, CSS
+- Frameworks used:- 
+- Libraries used: flask` - web framework, `werkzeug` - comes with Flask, used for password hashing, `sqlite3` - built into Python, no install needed, `random` - built into Python, `datetime` - built into Python, `functools
+- Tools used: VS Code, Google Sheets
 
 **For Hardware:**
 - Main components: [List main components]
@@ -46,10 +43,11 @@
 ## Features
 
 List the key features of your project:
-- Feature 1: [Description]
-- Feature 2: [Description]
-- Feature 3: [Description]
-- Feature 4: [Description]
+- Feature 1: [Authentication - Login, verification of identinty]
+- Feature 2: [Client Side - hire worker, Start/Stop OTP]
+- Feature 3: [Worker Side -Assigned jobs, rating, Submit ENd OTP]
+- Feature 4: [Job Flow]
+- Feature 5: [SOS System]
 
 ---
 
@@ -59,21 +57,21 @@ List the key features of your project:
 
 #### Installation
 ```bash
-[Installation commands - e.g., npm install, pip install -r requirements.txt]
+[pip install flask]
 ```
 
 #### Run
 ```bash
-[Run commands - e.g., npm start, python app.py]
+[py app.py]
 ```
 
 ### For Hardware:
 
 #### Components Required
-[List all components needed with specifications]
+NA
 
 #### Circuit Setup
-[Explain how to set up the circuit]
+NA
 
 ---
 
@@ -83,15 +81,15 @@ List the key features of your project:
 
 #### Screenshots (Add at least 3)
 
-![Screenshot1](Add screenshot 1 here with proper name)
-*Add caption explaining what this shows*
+![Screenshot1] <img width="1360" height="392" alt="image" src="https://github.com/user-attachments/assets/a994da90-19f4-480e-9667-3c418094ec35" />
 
-![Screenshot2](Add screenshot 2 here with proper name)
-*Add caption explaining what this shows*
+Basic HTML view of login screen 
+![Screenshot2] <img width="1135" height="489" alt="image" src="https://github.com/user-attachments/assets/161406c2-4c02-423d-aea5-01c12acd5577" />
 
-![Screenshot3](Add screenshot 3 here with proper name)
-*Add caption explaining what this shows*
+Basic HTML view of Registration Screen
+![Screenshot3] <img width="603" height="508" alt="image" src="https://github.com/user-attachments/assets/fa5405f0-13a8-4cb4-8eec-00181b255f46" />
 
+Basic HTML view of matching of worker to client
 #### Diagrams
 
 **System Architecture:**
@@ -109,25 +107,11 @@ List the key features of your project:
 ### For Hardware:
 
 #### Schematic & Circuit
-
-![Circuit](Add your circuit diagram here)
-*Add caption explaining connections*
-
-![Schematic](Add your schematic diagram here)
-*Add caption explaining the schematic*
+NA
 
 #### Build Photos
 
-![Team](Add photo of your team here)
-
-![Components](Add photo of your components here)
-*List out all components shown*
-
-![Build](Add photos of build process here)
-*Explain the build steps*
-
-![Final](Add photo of final product here)
-*Explain the final build*
+NA
 
 ---
 
@@ -372,8 +356,9 @@ python script.py -v --format json data.json
 
 ## AI Tools Used (Optional - For Transparency Bonus)
 
-If you used AI tools during development, document them here for transparency:
-
+Claude - debugging
+ChatGPT - front end nd elements of back end
+Gemini - Integration
 **Tool Used:** [e.g., GitHub Copilot, v0.dev, Cursor, ChatGPT, Claude]
 
 **Purpose:** [What you used it for]
@@ -407,8 +392,7 @@ If you used AI tools during development, document them here for transparency:
 ---
 
 ## License
-
-This project is licensed under the [LICENSE_NAME] License - see the [LICENSE](LICENSE) file for details.
+NA
 
 **Common License Options:**
 - MIT License (Permissive, widely used)
