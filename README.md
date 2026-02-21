@@ -95,7 +95,8 @@ Basic HTML view of matching of worker to client
 **System Architecture:**
 
 ![Architecture Diagram](docs/architecture.png)
-*Explain your system architecture - components, data flow, tech stack interaction*
+<img width="660" height="262" alt="image" src="https://github.com/user-attachments/assets/fdea3696-67b5-4006-843d-bf768aa48796" />
+
 
 **Application Workflow:**
 
